@@ -1,9 +1,9 @@
 ---
 title: "Reconstruct Diffusion Cascades"
 output:
-  word_document: default
   html_document: default
   pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -12,9 +12,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Datasets
 
-To reconstruct a diffusion cascade requires two datasets: 1, all retweets from an origanl tweet, which can be obtained from Twitter API - "GET statuses/retweets/:id""; 2, the following relationships among the retweeters, which can be ontained from the "GET friends/ids" API.
+To reconstruct a diffusion cascade requires two data sets: 1, all retweets from an original tweet, which can be obtained from Twitter API - "GET statuses/retweets/:id""; 2, the following relationships among the retweeters, which can be obtained from the "GET friends/ids" API.
 
-The retweet dataset should be a dataframe with the three columns: sharers, seed_users, and time. Each row indicates a retweeting action.Retweets were ordered chronologically from earliest to most recent. The below example is from Figure 2A.
+The retweet data set should be a dataframe with the three columns: sharers, seed_users, and time. Each row indicates a retweeting action.Retweets were ordered chronologically from earliest to most recent. The below example is from Figure 2A.
 
 ```{r}
 retws = data.frame(sharers=c(1:5),seed_user=rep(6,5),time=c(1:5))
@@ -30,10 +30,10 @@ followings
 
 ## Function
 
-The following function can be used to recontruct a diffusion cascade, given retweets and followings.
+The following function can be used to reconstruct a diffusion cascade, given retweets and followings.
 
 ```{r}
-recontruct = function(retws,followings){
+reconstruct = function(retws,followings){
   library(plyr)
   if (nrow(followings)>0){
     dn = merge(followings,retws[,c('sharers','time')],by.x='egos',by.y='sharers')
@@ -69,7 +69,7 @@ recontruct = function(retws,followings){
 
 To reconstruct the diffusion cascade of Figure 2.
 ```{r}
-diffnet = recontruct(retws=retws,followings=followings)
+diffnet = reconstruct(retws=retws,followings=followings)
 diffnet
 ```
 
