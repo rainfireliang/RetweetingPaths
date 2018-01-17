@@ -75,7 +75,7 @@ diffnet
 
 To plot the diffusion cascade by using the igraph package. This figure is similar to Figure 2B.
 
-```{r}
+```{r,warning=F}
 library(igraph)
 g = graph.data.frame(diffnet[,c('seed_user','sharers')],directed = T)
 V(g)$color = "white"
