@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Datasets
 
-To reconstruct a diffusion cascade requires two data sets: 1, all retweets from an original tweet, which can be obtained from Twitter API - "GET statuses/retweets/:id"; 2, the following relationships among the retweeters, which can be obtained from the "GET friends/ids" API.
+To reconstruct a diffusion cascade requires two data sets: 1, all retweets from an original tweet, which can be obtained from Twitter API - "GET statuses/retweets/:id""; 2, the following relationships among the retweeters, which can be obtained from the "GET friends/ids" API.
 
 The retweet data set should be a dataframe with the three columns: sharers, seed_users, and time. Each row indicates a retweeting action.Retweets were ordered chronologically from earliest to most recent. The below example is from Figure 2A.
 
